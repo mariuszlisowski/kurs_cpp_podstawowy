@@ -1,18 +1,19 @@
 #pragma once
-#include <cmath>
+#include <cstdlib>
 
 int NWD(int lhs, int rhs) {
 	int remainder;
-	while (rhs != 0) {
+	while (rhs !=0) {
 		remainder = lhs % rhs;
 		lhs = rhs;
 		rhs = remainder;
 	}
-	return abs(lhs);
+	return std::abs(lhs);
 }
 
 int NWW(int lhs, int rhs) {
     if (!lhs || !rhs)
 		return 0;
-	return abs(lhs * rhs / NWD(lhs, rhs));
+	return std::llabs(static_cast<unsigned long long>(lhs)
+					  * rhs / NWD(lhs, rhs));
 }
