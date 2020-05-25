@@ -4,7 +4,7 @@
 
 int maxOfVector(const std::vector<int>& vec) {
 	int max {std::numeric_limits<int>::min()};
-	for (auto e : vec) {
+	for (const auto& e : vec) {
 		if (e > max)
 			max = e;
 	}
