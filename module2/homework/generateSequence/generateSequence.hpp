@@ -4,11 +4,10 @@
 std::vector<int> generateSequence(int count, int step) {
 	std::vector<int> vec;
 	if (count > 0) {
-		vec.resize(count);
+		vec.reserve(count);
 		int value {};
-		for (size_t i = 0; i < count; ++i) {
-			vec[i] = (value += step);
-		}
+		while (count--)
+			vec.push_back(value += step);
 	}
 	return vec;
 }
