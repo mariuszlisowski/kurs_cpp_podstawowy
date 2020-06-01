@@ -1,8 +1,8 @@
-#include <iostream>
-#include <vector>
-#include <memory>
-
 #include "vectorFunctions.hpp"
+
+#include <iostream>
+#include <memory>
+#include <vector>
 
 std::vector<std::shared_ptr<int>> generate(int count) {
 	std::vector<std::shared_ptr<int>> vsptr;
@@ -23,19 +23,16 @@ void print(const std::vector<std::shared_ptr<int>>& vsptr) {
 
 void add10(const std::vector<std::shared_ptr<int>>& vsptr) {
 	for (const auto& e : vsptr) {
-		if (e)
-			*e += 10;
+		if (e) *e += 10;
 	}
 }
 
 void sub10(int* const sptr) {
-	if (sptr)
-		*sptr -= 10;
+	if (sptr) *sptr -= 10;
 }
 
 void sub10(const std::vector<std::shared_ptr<int>>& vsptr) {
 	for (const auto& e : vsptr) {
-		if (e)
-			sub10(e.get());
+		if (e) sub10(e.get());
 	}
 }
