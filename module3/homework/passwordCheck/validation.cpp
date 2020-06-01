@@ -1,47 +1,33 @@
 #include "validation.hpp"
-#include <string>
+
 #include <algorithm>
 #include <cctype>
+#include <string>
 //
 std::string getErrorMessage(ErrorCode err) {
 	switch (err) {
 	case ErrorCode::Ok:
 		return "OK";
-		break;
 	case ErrorCode::PasswordsDoesNotMatch:
 		return "Passwords do not match";
-		break;
 	case ErrorCode::PasswordNeedsAtLeastNineCharacters:
 		return "Password needs at least nine characters";
-		break;
 	case ErrorCode::PasswordNeedsAtLeastOneNumber:
 		return "Password needs at least one number";
-		break;
 	case ErrorCode::PasswordNeedsAtLeastOneSpecialCharacter:
 		return "Password needs at least one special character";
-		break;
 	case ErrorCode::PasswordNeedsAtLeastOneUppercaseLetter:
 		return "Password needs at least one uppercase letter";
-		break;
 	default:
 		return "";
 	}
-}
-//
-bool isCharSpecial(char ch) {
-	char special[] {'#', '$', '%', '&', '!', '?', '@', '^', '(', ')', '<', '>'};
-	for (const char& c : special) {
-		if (c == ch)
-			return true;
-	}
-	return false;
 }
 //
 bool isNumberInPassword(const std::string& pass) {
 	return std::any_of(pass.begin(), pass.end(), ::isdigit);
 }
 bool isSpecialCharInPassword(const std::string& pass) {
-	return std::any_of(pass.begin(), pass.end(), ::isCharSpecial);
+	return std::any_of(pass.begin(), pass.end(), ::ispunct);
 }
 bool isUppercaseInPassword(const std::string& pass) {
 	return std::any_of(pass.begin(), pass.end(), ::isupper);
